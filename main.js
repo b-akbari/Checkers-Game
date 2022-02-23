@@ -2,14 +2,14 @@
 const gameBoard = {
     //each "row" is the Y coordinate and each "column" is the X coordinate gameBoard.board[y][x];
     board: [
-      ['', '', '','','','r','','r'],
-      ['r', '', 'b','','r','','r',''],
-      ['', 'r', '','r','','r','','r'],
-      ['', '', '','','b','','',''],
-      ['', 'r', '','','','','',''],
-      ['b', '', 'b','','b','','b',''],
-      ['', 'b', '','b','','b','','o'],
-      ['b', '', 'b','','b','','b',''],
+      ['', 'B', '','','','','',''],
+      ['', '', 'b','','b','','',''],
+      ['', '', '','r','','','',''],
+      ['', '', '','','','','',''],
+      ['', 'r', '','R','','','',''],
+      ['b', '', 'B','','b','','b',''],
+      ['', '', '','b','','b','','o'],
+      ['', '', 'b','','b','','R',''],
       
     ],}
   
@@ -42,7 +42,7 @@ function renderPieces(){
             } 
             else if(X=='o')
             {
-                square.innerHTML="<img src ='https://img.search.brave.com/8kyCJs8D5yJs-QFCRtYzRrj8vPT_dead0oapLSyGvLY/rs:fit:736:736:1/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vNzM2/eC80OC8wMy84MC80/ODAzODAxMTk4YTYx/NTE2OTMxZDcyYmU3/OGVjNGIwMS5qcGc'>"
+                square.innerHTML="<img src ='https://www.pngarts.com/files/3/Shooting-Target-PNG-Background-Image.png'>"
             }
             else if(X==='')
             {
@@ -50,11 +50,11 @@ function renderPieces(){
             }
             else if(X==='B')
             {
-                square.innerHTML="<img src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn4.iconfinder.com%2Fdata%2Ficons%2Fboard-games-glyph%2F48%2FGames_BoardGames_Artboard_15-512.png&f=1&nofb=1'>";
+                square.innerHTML="<img src='https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/d63d9911dccd0f9.png'>";
             }
             else if(X==='R')
             {
-                square.innerHTML="";
+                square.innerHTML="<img src='https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/f3d2944135aa687.png'>";
             }
     })
 })
@@ -98,16 +98,21 @@ function ToggleSelectPiece(){ //on first click checks if the location belongs to
         prevClickedId=null;
         firstClick=true;
         selected=false;
-    } else if(gameBoard.board[clickedY][clickedX]=='b' && blackTurn==true &&selected==false &&firstClick==true){
+    } else if(gameBoard.board[clickedY][clickedX]==='b' && blackTurn==true &&selected==false &&firstClick==true){
         if(prevClickedId==null){
             addPrevClick();
             selected=true;
             console.log(`prev clicked x:${prevClickedX} / prevclickedY: ${prevClickedY} // clickedX: ${clickedX} / clickedY: ${clickedY}`);
         } 
-        // else{
-        //     changePrevClick();
-        // }
-    } else if (gameBoard.board[clickedY][clickedX]=='r' && blackTurn==false && selected==false && firstClick==true){
+
+    } else if(gameBoard.board[clickedY][clickedX]==='B' && blackTurn==true &&selected==false &&firstClick==true){
+        if(prevClickedId==null){
+            addPrevClick();
+            selected=true;
+            console.log(`prev clicked x:${prevClickedX} / prevclickedY: ${prevClickedY} // clickedX: ${clickedX} / clickedY: ${clickedY}`);
+        } 
+
+    } else if (gameBoard.board[clickedY][clickedX]==='r' && blackTurn==false && selected==false && firstClick==true){
         if(prevClickedId==null){
 
             addPrevClick();
@@ -115,9 +120,13 @@ function ToggleSelectPiece(){ //on first click checks if the location belongs to
             console.log(`prev clicked x:${prevClickedX} / prevclickedY: ${prevClickedY} // clickedX: ${clickedX} / clickedY: ${clickedY}`);
 
         } 
-        // else{
-        //     changePrevClick();
-        // }
+    }else if(gameBoard.board[clickedY][clickedX]==='R' && blackTurn==false &&selected==false &&firstClick==true){
+        if(prevClickedId==null){
+            addPrevClick();
+            selected=true;
+            console.log(`prev clicked x:${prevClickedX} / prevclickedY: ${prevClickedY} // clickedX: ${clickedX} / clickedY: ${clickedY}`);
+        } 
+        
     }
 }
 
@@ -137,61 +146,157 @@ let optionArrY=[];
 // let captureArr=[];
 function checkOptions(){
     // firstClick===false &&
-    if( blackTurn===true &&selectedPieceType==='b' && selected==true){ //if piece is regular black
-        //regular moves
-        if( gameBoard.board[clickedY-1][clickedX+1] =='' ){
-            optionArrX.push(clickedX+1);
-            optionArrY.push(clickedY-1);
-        }
+    function moveUpLeft(){
         if(gameBoard.board[clickedY-1][clickedX-1] ==''){
             optionArrX.push(clickedX-1);
             optionArrY.push(clickedY-1);
         }
-        //left side capture
-        console.log('clickedY', clickedY-2,  'clickedx:', clickedX-2)
-        if(clickedY>1 && clickedY<=7){
-            if(gameBoard.board[clickedY-2][clickedX-2] =='' && gameBoard.board[clickedY-1][clickedX-1] =='r'){
-                optionArrX.push(clickedX-2);
-                optionArrY.push(clickedY-2);
-                // captureArr=[clickedY-2,clickedX-2]
-            }//right side capture
-            if(gameBoard.board[clickedY-2][clickedX+2] =='' && gameBoard.board[clickedY-1][clickedX+1] =='r'){
-                optionArrX.push(clickedX+2);
-                optionArrY.push(clickedY-2);
-                // captureArr=[clickedY-2,clickedX-2]
-            }
+    }
+    function moveUpRight(){
+        if( gameBoard.board[clickedY-1][clickedX+1] =='' ){
+            optionArrX.push(clickedX+1);
+            optionArrY.push(clickedY-1);
         }
-
-    }  else if (blackTurn===false && selectedPieceType==='r' && selected===true){ //if piece is regular red
-        //moves
+    }
+    function moveDownLeft(){
         if(gameBoard.board[clickedY+1][clickedX+1] =='' ){
+            //down and to the right
             optionArrX.push(clickedX+1);
             optionArrY.push(clickedY+1);
         }
+    }
+    function moveDownRight(){
+
         if(gameBoard.board[clickedY+1][clickedX-1] ==''){
+            //moving down to the left
             optionArrX.push(clickedX-1);
             optionArrY.push(clickedY+1);
+        }
+    }
+    function captureUpLeft(){
+        if(gameBoard.board[clickedY-2][clickedX-2] ==''){
+            optionArrX.push(clickedX-2);
+            optionArrY.push(clickedY-2);
+            // captureArr=[clickedY-2,clickedX-2]
+        }
+    }
+    function captureUpRight(){
+        if(gameBoard.board[clickedY-2][clickedX+2] ==''){
+            optionArrX.push(clickedX+2);
+            optionArrY.push(clickedY-2);
+            // captureArr=[clickedY-2,clickedX-2]
+        }
+    }
+    function captureDownRight(){
+        if(gameBoard.board[clickedY+2][clickedX+2] ==''){
+            optionArrX.push(clickedX+2);
+            optionArrY.push(clickedY+2);
+        }
+    }
+    function captureDownLeft(){
+        if(gameBoard.board[clickedY+2][clickedX-2] ==''){
+            optionArrX.push(clickedX-2);
+            optionArrY.push(clickedY+2);
+        }
+    }
+    if( blackTurn===true &&selectedPieceType=='b' && selected==true){ //black piece is moving forwards
+
+        moveUpRight();
+        moveUpLeft()
+        //captures
+        if(clickedY>1 && clickedY<=7){
+            if(gameBoard.board[clickedY-1][clickedX-1] =='r' || gameBoard.board[clickedY-1][clickedX-1] =='R'){
+                captureUpLeft();
+            }//right side capture
+            if(gameBoard.board[clickedY-1][clickedX+1] =='r' || gameBoard.board[clickedY-1][clickedX+1] =='R'){
+                captureUpRight();
+            }
+        }
+    } else if( blackTurn===true &&selectedPieceType==='B' && selected==true){//King black piece 
+        //moving up
+        if(clickedY>=1){
+            moveUpRight();
+            moveUpLeft()
+        }
+        //moving down
+        if(clickedY<=6){
+            moveDownRight();
+            moveDownLeft();
         }
 
         //captures
         if(clickedY<=5 && clickedY>=0){
-            if(gameBoard.board[clickedY+2][clickedX-2] =='' &&gameBoard.board[clickedY+1][clickedX-1] =='b'){//left side capture
-                optionArrX.push(clickedX-2);
-                optionArrY.push(clickedY+2);
-                // captureArr=[clickedY-2,clickedX-2]
-            }//right side capture
-            if(gameBoard.board[clickedY+2][clickedX+2] =='' &&gameBoard.board[clickedY+1][clickedX+1] =='b'){
-                optionArrX.push(clickedX+2);
-                optionArrY.push(clickedY+2);
-                // captureArr=[clickedY-2,clickedX-2]
+            // down left capture
+            if(gameBoard.board[clickedY+1][clickedX-1] =='r' || gameBoard.board[clickedY+1][clickedX-1] =='R'){
+                captureDownLeft();
+            }// down right capture
+            if(gameBoard.board[clickedY+1][clickedX+1] =='r' || gameBoard.board[clickedY+1][clickedX+1] =='R'){
+                captureDownRight();
             }
         }
+        if(clickedY>1 && clickedY<=7){
+            //up left capture
+            if(gameBoard.board[clickedY-1][clickedX-1] =='r'|| gameBoard.board[clickedY-1][clickedX-1] =='R'){
+                captureUpLeft();
+            }
+            //up right capture
+            if(gameBoard.board[clickedY-1][clickedX+1] =='r' || gameBoard.board[clickedY-1][clickedX+1] =='R' ){
+                captureUpRight();
+            }
+        }
+        //regular red piece
+
+    } else if (blackTurn===false && selectedPieceType==='r' && selected===true){ //if piece is regular red
+        //moves
+        moveDownLeft();
+        moveDownRight();
+        //captures
+        if(clickedY<=5 && clickedY>=0){
+            //left side capture
+            if(gameBoard.board[clickedY+1][clickedX-1] =='b' || gameBoard.board[clickedY+1][clickedX-1] =='B'){
+                captureDownLeft();
+            }//right side capture
+            if(gameBoard.board[clickedY+1][clickedX+1] =='b' || gameBoard.board[clickedY+1][clickedX+1] =='B'){
+                captureDownRight();
+            }
+        } 
+    }else if(blackTurn===false && selectedPieceType==='R' && selected===true){//King Red Piece
+        if(clickedY>=1){
+            moveUpRight();
+            moveUpLeft()
+        }
+        if(clickedY<=6){
+            moveDownRight();
+            moveDownLeft();
+        }
+        //captures
+        if(clickedY<=5 && clickedY>=0){
+            // down left capture
+            if(gameBoard.board[clickedY+1][clickedX-1] =='b' || gameBoard.board[clickedY+1][clickedX-1] =='B'){
+                captureDownLeft();
+            }// down right capture
+            if(gameBoard.board[clickedY+1][clickedX+1] =='b' || gameBoard.board[clickedY+1][clickedX+1] =='B'){
+                captureDownRight();
+            }
+        }
+        if(clickedY>1 && clickedY<=7){
+            //up left capture
+            if(gameBoard.board[clickedY-1][clickedX-1] =='b'|| gameBoard.board[clickedY-1][clickedX-1] =='B'){
+                captureUpLeft();
+            }
+            //up right capture
+            if(gameBoard.board[clickedY-1][clickedX+1] =='b' || gameBoard.board[clickedY-1][clickedX+1] =='B' ){
+                captureUpRight();
+            }
+        }
+        
     }
     
     console.log('optionArrX:'+optionArrX +'  optionArrY:'+optionArrY);
     modelOptions();
-    renderPieces();
+    // renderPieces();
 }
+
 
 
 function modelOptions(){
@@ -199,7 +304,7 @@ function modelOptions(){
         gameBoard.board[optionArrY[i]][optionArrX[i]]='o';
 
     }
-    renderPieces();
+    // renderPieces();
 }
 
 function removeOptions(){
@@ -210,7 +315,7 @@ function removeOptions(){
     }
     optionArrY=[];
     optionArrX=[];
-    renderPieces();
+    // renderPieces();
 }
 
 let diffX=null;
@@ -242,7 +347,7 @@ function capturePiece(){
                 diffY=(clickedY-y1);
             }
     }
-    renderPieces();
+    // renderPieces();
 }
 
 
@@ -286,7 +391,7 @@ function movePiece(evt){
         prevClickedId=null;
         // prevClickedX=null;
         // prevClickedY=null;
-        renderPieces();
+        // renderPieces();
         }
 
     
@@ -306,7 +411,7 @@ function selectBox(evt){
     // capturePiece();
     movePiece(evt); 
     }
-   
+    renderPieces();
     console.log('first click:'+firstClick+'  blackTurn: ' + blackTurn);
     // console.log('currentTarget-classList: '+evt.currentTarget.classList);
     //   console.log('target value:'+evt.target.value);
