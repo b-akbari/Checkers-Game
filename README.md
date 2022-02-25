@@ -1,4 +1,4 @@
-# Checkers-#
+# Checkers
 
 ## Description
 this is a web based Checkers game using HTML, CSS and Javascript.
@@ -6,27 +6,43 @@ the game is Javascript dominant.
 
 
 
-### the starting position of the game
+### the layout of the website
 
-<img width="735" alt="Screen Shot 2022-02-25 at 9 56 29 AM" src="h<img width="733" alt="Screen Shot 2022-02-25 at 9 56 47 AM" src="https://user-images.githubusercontent.com/89370673/155736997-4af557ec-4e6a-4500-878a-ddfd74a96523.png">
+![layout](images/layout.png)
+
+### the starting position:
+![starting-position](images/starting-position.png)
 
 
 ### selecting a piece/showing options
-<img width="733" alt="Screen Shot 2022-02-25 at 9 56 47 AM" src="https://user-images.githubusercontent.com/89370673/155737100-27451f32-c103-4855-bc2b-80efc6b2acb4.png">
+![selecting](images/Selecting.png)
+
+
+### winner display
+![win-Message](images/win-Message.png)
 
 
 
 
-##Technologies Used: 
+
+## Technologies Used
  JavaScript, HTML, CSS.
 
-##Getting Started
+## Getting Started
+This is the link to play the game.
+
 https://b-akbari.github.io/Checkers-Game/
-the rules of the game are pretty simple, capture all of your opponents pieces or make them unable to move.
+
+## instructions
+Use the mouse to select your piece. click on a targeted box to move your selected piece to said target. capture all of your opponents pieces by 'hopping' over them or trap (unable to move) to win.
 
 ## Next Steps: Planned future enhancements (icebox items).
 -adding sound effects
 -making the page more responsive
+-adding current turn
+-adding movement animations
+-adding AI for 1 player games
+
 
 ## Acknowledgments
-thank you to Fil, Charles, Ivo, martin and the Rebel group for the help and support
+A Nod to Filipe, Ivo, Charles, Martin, and the Mongolorians
