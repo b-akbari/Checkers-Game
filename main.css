@@ -80,7 +80,7 @@ TD {
     background-color: #e3ff94;
     position:absolute;
     display:flex;
-    top:14vh;
+    top:13vh;
     left:2vh;
 }
 #reset-button:hover{
@@ -127,8 +127,8 @@ top:1vh;
 }
 
 img{
-  height:95%;
-  width:95%;
+  height:93%;
+  width:93%;
 }
 
 .selected{
