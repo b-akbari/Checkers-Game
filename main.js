@@ -28,23 +28,16 @@ let firstClick=true;
 let validClick=true;
   
 function renderPieces(){
-  //if row>column = 'r' inner html= <img src='https://www.pinclipart.com/picdir/big/72-729763_dots-clipart-red-circle-circle-png-download.png'
   console.log('renderPieces triggered');
     gameBoard.board.forEach((row,idexY)=>{
     row.forEach((X,idexX)=>{
             let square= document.getElementById(`${idexY}-${idexX}`);
             if(X==='r'){
-            // player2Piece.classList.add('red');
             square.innerHTML="<img src='images/Red-Checkers-Piece.png'>"
-            // "<img src='https://www.pinclipart.com/picdir/big/72-729763_dots-clipart-red-circle-circle-png-download.png'>"
             }
             else if(X==='b')
             {
-            // docume.getElementById(`${idexY}-${idexX}`);
-            // player1Piece.classList.add('black');
             square.innerHTML="<img src='images/Black-checkers-piece.png'>";
-            // ©
-            // "<img src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.medassurance.com%2Fwp-content%2Fuploads%2F2015%2F06%2Fblack-circle.png&f=1&nofb=1'>";
             } 
             else if(X=='o')
             {
@@ -69,11 +62,10 @@ function renderPieces(){
 renderPieces();
 
 let winner=null;
-// let possibleMoveNum=0;
 let winCheckArray=[];
-// Get the modal
 let modal = document.getElementById("myModal");
 let winningMessage=document.getElementById('winning-message');
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
@@ -141,7 +133,6 @@ function getClickedLocation (evt){
     clickedId=evt.currentTarget.id;
     clickedY=parseInt(clickedIdString[0]);
     clickedX=parseInt(clickedIdString[1]);
-    console.log('X:'+clickedX+' Y: '+clickedY);
 }
 
 let prevClickedId=null;
@@ -151,7 +142,7 @@ selectedPieceType=null;
 let selected=false;
 
 function ToggleSelectPiece(evt){ //on first click checks if the location belongs to the current player, calls add prev click Function
-    console.log('toggleSelectPiece called');
+
     getClickedLocation(evt);
     optionsShowing=false;
     if(prevClickedId===clickedId || (gameBoard.board[clickedY][clickedX]!='o' && selected==true) ){
@@ -163,35 +154,27 @@ function ToggleSelectPiece(evt){ //on first click checks if the location belongs
     } else if(gameBoard.board[clickedY][clickedX]==='b' && blackTurn==true &&selected==false){
         if(prevClickedId==null){
             addPrevClick();
-            // console.log(`prev clicked x:${prevClickedX} / prevclickedY: ${prevClickedY} // clickedX: ${clickedX} / clickedY: ${clickedY}`);
         } 
-
     } else if(gameBoard.board[clickedY][clickedX]==='B' && blackTurn==true &&selected==false ){
         if(prevClickedId==null){
             addPrevClick();
-            // console.log(`prev clicked x:${prevClickedX} / prevclickedY: ${prevClickedY} // clickedX: ${clickedX} / clickedY: ${clickedY}`);
-        } 
-
+        }
     } else if (gameBoard.board[clickedY][clickedX]==='r' && blackTurn==false && selected==false ){
         if(prevClickedId==null){
             addPrevClick();
-            // console.log(`prev clicked x:${prevClickedX} / prevclickedY: ${prevClickedY} // clickedX: ${clickedX} / clickedY: ${clickedY}`);
         } 
     }else if(gameBoard.board[clickedY][clickedX]==='R' && blackTurn==false &&selected==false ){
         if(prevClickedId==null){
             addPrevClick();
-            // console.log(`prev clicked x:${prevClickedX} / prevclickedY: ${prevClickedY} // clickedX: ${clickedX} / clickedY: ${clickedY}`);
         } 
         
     }
 }
 
 function addPrevClick(){ // used to highlight and chache prev click's info
-    console.log('addPrevClick triggered');
     prevClickedId=clickedId;
     prevClickedX=clickedX;
     prevClickedY=clickedY;
-    console.log('added prev click')
     document.getElementById(clickedId).classList.add('selected');
     selectedPieceType=gameBoard.board[clickedY][clickedX];
     selected=true;
@@ -254,10 +237,8 @@ let optionArrX=[];
 let optionArrY=[];
 let optionsShowing=false;
 function checkOptions(clickedX,clickedY,piece){
-    console.log('checkOptions triggered');
     optionArrY=[];
     optionArrX=[];
-    // firstClick===false &&
     if( blackTurn===true && piece=='b' && selected==true){ //black piece (moving 'up')
         if(clickedY>=1){
             moveUpRight(clickedX,clickedY);
@@ -355,15 +336,11 @@ function checkOptions(clickedX,clickedY,piece){
         }
         
     }
-    console.log('option array: ',optionArrY);
-    console.log('winCheckArray',winCheckArray);
     winCheckArray=winCheckArray.concat(optionArrY)
     optionsShowing==true;
-    // modelOptions();
 }
 
 function modelOptions(){
-    console.log('modelOptions triggered');
     for(i=0;i<optionArrY.length; i++){
         gameBoard.board[optionArrY[i]][optionArrX[i]]='o';
     }
@@ -371,12 +348,10 @@ function modelOptions(){
 }
 
 function removeOptions(){
-    console.log('removeOptions triggered');
     gameBoard.board.forEach((row,idexY)=>{
         row.forEach((column,idexX)=>{
             if(column=='o'){
                 gameBoard.board[idexY][idexX]='';
-                console.log('test WCA',optionArrY);
             }
         })
     })
@@ -392,25 +367,19 @@ function removeOptions(){
 
 
 function capturePiece(){
-    console.log('capturePiece triggered');
     let diffY=null;
     let diffX=null;
     let y1=prevClickedY;
     let x1=prevClickedX;
     diffX=(clickedX-x1);
     diffY=(clickedY-y1);
-    console.log('capturePiece Test1-diffX:'+diffX);
     if(Math.abs(diffX)>1){
             for(i=0;i<=Math.abs(diffX); i++){
-                console.log(`y1 =${y1} x1= ${x1} diffX=${diffX}`)
                 x1+=Math.sign(diffX);
                 y1+=Math.sign(diffY);
-                console.log(`y1 =${y1} x1= ${x1}`)
                 gameBoard.board[y1][x1]='';
                 x1+=Math.sign(diffX);
                 y1+=Math.sign(diffY);
-                console.log(`y1 =${y1} x1= ${x1}`)
-
                 diffX=(clickedX-x1);
                 diffY=(clickedY-y1);
             }
@@ -418,7 +387,6 @@ function capturePiece(){
 }
 
 function movePiece(evt){
-    console.log('movePiece triggered');
        if(gameBoard.board[prevClickedY][prevClickedX]='o'){
         capturePiece();
         let lastSpot=document.getElementById(prevClickedId)
@@ -445,15 +413,11 @@ const boxes=document.querySelectorAll('.box');
 boxes.forEach(box=> box.addEventListener('click',selectBox));
 
 function selectBox(evt){
-console.log('selectBox is triggered');
-
-
     if (winner==null){
         if(firstClick==true ||prevClickedId==clickedId){
             ToggleSelectPiece(evt);
         }
         if (selected==true &&firstClick==false && optionsShowing==false){
-            console.log('select-box: checkoptions, modelOps')
             checkOptions(clickedX,clickedY,selectedPieceType);
             modelOptions();
             renderPieces();
@@ -469,7 +433,6 @@ console.log('selectBox is triggered');
             clickedX=prevClickedX;
             clickedY=prevClickedY;
         }
-        console.log('first click:',firstClick,'  blackTurn: ' ,blackTurn,'selected',selected,'optionsShowing',optionsShowing,'winner',winner);
     }
 }
 const resetButton=document.getElementById('reset-button');
@@ -486,7 +449,6 @@ function resetBoard() {
         ['', 'b', '','b','','b','','b'],
         ['b', '', 'b','','b','','b',''],
       ]
-    // removeOptions();
     renderPieces();
     firstClick=true;
     selected=false;
