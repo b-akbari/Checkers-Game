@@ -9,10 +9,11 @@
     <link href="main.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <h1><span>C</span>OZY <span></br>C</span>heckers</h1>
-    <button id ='reset-button' >Reset Game</button>
-    <!-- onclick="resetBoard()"  -->
-      <table id="table">
+    <header><h1 class='flex-ctr'><span>COZY-</span>Checkers</h1>
+    </header>
+    
+    <button id ='reset-button' >Reset Board</button>
+      <table class='flex-ctr' id="table">
         <tr id='row0'>
             <td class='box' id="0-0"></td>
             <td class='box' id="0-1"></td>
@@ -95,7 +96,19 @@
         </tr>
         </tr>
     </table>
-    <h2>welcome to my humble Checkers game, where we relax, have fun and enjoy the ride</h2>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <!-- <span class="close">&times;</span> -->
+        <p id='winning-message'></p>
+    </div>
+
+    </div>
+    <h2></h2>
+    <h2 id='cozy-welcome' >Welcome to my cozy checkers game, where we can relax, have fun and sip our warm beverages of choice.</h2>
     <script defer src="main.js"></script>
   </body>
 </html>
