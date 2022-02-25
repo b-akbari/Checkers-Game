@@ -35,20 +35,20 @@ function renderPieces(){
             let square= document.getElementById(`${idexY}-${idexX}`);
             if(X==='r'){
             // player2Piece.classList.add('red');
-            square.innerHTML="<img src='https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/4320467701dd4de.png'>"
+            square.innerHTML="<img src='images/Red-Checkers-Piece.png'>"
             // "<img src='https://www.pinclipart.com/picdir/big/72-729763_dots-clipart-red-circle-circle-png-download.png'>"
             }
             else if(X==='b')
             {
             // docume.getElementById(`${idexY}-${idexX}`);
             // player1Piece.classList.add('black');
-            square.innerHTML="<img src='https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/373f3c622fd0305.png'>";
+            square.innerHTML="<img src='images/Black-checkers-piece.png'>";
             // ©
             // "<img src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.medassurance.com%2Fwp-content%2Fuploads%2F2015%2F06%2Fblack-circle.png&f=1&nofb=1'>";
             } 
             else if(X=='o')
             {
-                square.innerHTML="<img src ='https://www.pngarts.com/files/3/Shooting-Target-PNG-Background-Image.png'>"
+                square.innerHTML="<img src ='images/Target-option-Checkers.png'>"
             }
             else if(X==='')
             {
@@ -56,11 +56,11 @@ function renderPieces(){
             }
             else if(X==='B')
             {
-                square.innerHTML="<img src='https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/d63d9911dccd0f9.png'>";
+                square.innerHTML="<img src='images/Black-Checkers-king.png'>";
             }
             else if(X==='R')
             {
-                square.innerHTML="<img src='https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/f3d2944135aa687.png'>";
+                square.innerHTML="<img src='images/Red-Checkers-king.png'>";
             }
     })
 })

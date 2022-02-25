@@ -1,13 +1,23 @@
 body{
     background-color: #F9ECCC;
-    display:grid;
+    /* display:grid; */
     height:100vh;
+    width: 100vw;
     margin:0;
-    grid-template-columns: repeat(5, 1fr);
-    grid-auto-rows: minmax(25px,auto);
-    gap:0;
+    /* grid-auto-columns: 2, 1fr; */
+    /* grid-auto-rows: minmax(25px,auto); */
+    /* gap:0; */
 }
 
+#container{
+    display:grid;
+    height:75vh;
+    width: 100vw;
+    margin:0;
+    grid-auto-columns: 2fr, 1fr;
+    grid-auto-rows: (1fr);
+    /* gap:vw; */
+}
 .flex-ctr{
     display:flex;
     justify-content: center;
@@ -16,22 +26,34 @@ body{
 
 TABLE {
     /* flex-direction:column; */
-    grid-column: 1/4;
-    display:flex;
+    /* justify-content:; */
+    grid-column: 1;
+    grid-row:1;
+    /* display:flex; */
     border: 1px solid black;
     background-color:#393D3F ;
     filter: drop-shadow(5px 5px 6px black);
-    display:inline;
+    /* display:inline; */
     height: 82vh;
+    width: 82vh;
+    top:0vh;
+    position: relative;
 
     /* -block;  */
     /* margin: 2% auto; */
     
 }
 
+aside{
+    display: grid;
+    grid-column: 2;
+    grid-row: 1;
+    margin:0;
+}
+
 TD {
-    width:10vh; 
-    height: 10vh;
+    width:9vh; 
+    height: 9vh;
     border: .2vh solid black;
     text-align: center;
     /* color:aqua; */
@@ -41,15 +63,24 @@ TD {
     /* background-color:rgba(179, 179, 179, 0.432); */
 }
 
+#fire{
+    display: grid;
+    grid-column: 2;
+    grid-row: 1;
+    margin:10vh 6vw ;
+
+}
+
 #reset-button{
     margin:5px;
     font-size: 3vh;
     color:black;
     border-radius: 2vh;
+    border:3px solid black;
     background-color: #e3ff94;
     position:absolute;
     display:flex;
-    top:14.5vh;
+    top:14vh;
     left:2vh;
 }
 #reset-button:hover{
@@ -82,6 +113,13 @@ TD {
     background:#441a03;
 }
 
+#linked-in{
+position: absolute;
+height: 5vh;
+width: 5vh;
+right:1vh;
+top:1vh;
+}
 
 
 * {
@@ -100,13 +138,14 @@ img{
 h1{
     text-align:center;
     color:gold;
-    display:flex;
+    /* display:flex; */
     flex-direction: row;
     font-size: 6vh;
     background-color: #441a03;
-    width: 50vw;
+    width: 100vw;
     border-radius: 50%;
-    /* grid-column: 2/; */
+    margin: 1 vh auto;
+    /* grid-column: ; */
     /* grid-row: auto; */
     padding:2vh;
     /* justify-content: center; */
@@ -120,10 +159,14 @@ h1{
   }
 
   #cozy-welcome{
-    grid-column: 4/6;
+      /* display */
+    grid-column: 2;
     display:grid;
+    grid-row:1;
     font-size: 3vh;
-    padding: 2vw;
+    padding: 1w;
+    background-color:slategray;
+    margin:2vw
   }
 
   /* The Modal (background) */
