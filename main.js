@@ -34,25 +34,15 @@ function renderPieces(){
             let square= document.getElementById(`${idexY}-${idexX}`);
             if(X==='r'){
             square.innerHTML="<img src='images/Red-Checkers-Piece.png'>"
-            }
-            else if(X==='b')
-            {
+            } else if(X==='b'){
             square.innerHTML="<img src='images/Black-checkers-piece.png'>";
-            } 
-            else if(X=='o')
-            {
+            } else if(X=='o'){
                 square.innerHTML="<img src ='images/Target-option-Checkers.png'>"
-            }
-            else if(X==='')
-            {
+            } else if(X===''){
                 square.innerHTML="";
-            }
-            else if(X==='B')
-            {
+            } else if(X==='B'){
                 square.innerHTML="<img src='images/Black-Checkers-king.png'>";
-            }
-            else if(X==='R')
-            {
+            } else if(X==='R'){
                 square.innerHTML="<img src='images/Red-Checkers-king.png'>";
             }
     })
@@ -355,7 +345,6 @@ function removeOptions(){
             }
         })
     })
-
     if(isNaN(prevClickedId)){
         if(document.getElementById(prevClickedId).classList.contains('selected')){
             document.getElementById(prevClickedId).classList.remove('selected');

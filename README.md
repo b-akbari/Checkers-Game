@@ -6,11 +6,12 @@ the game is Javascript dominant.
 
 
 
-the starting position of the game
-<img width="735" alt="Screen Shot 2022-02-25 at 9 56 29 AM" src="h<img width="733" alt="Screen Shot 2022-02-25 at 9 56 47 AM" src="https://user-images.githubusercontent.com/89370673/155736997-4af557ec-4e6a-4500-878a-ddfd74a96523.png">
-ttps://user-images.githubusercontent.com/89370673/155736918-53e1f40e-4f8b-4d45-a4fd-566615c082f4.png">
+### the starting position of the game
 
-selecting a piece/showing options
+<img width="735" alt="Screen Shot 2022-02-25 at 9 56 29 AM" src="h<img width="733" alt="Screen Shot 2022-02-25 at 9 56 47 AM" src="https://user-images.githubusercontent.com/89370673/155736997-4af557ec-4e6a-4500-878a-ddfd74a96523.png">
+
+
+### selecting a piece/showing options
 <img width="733" alt="Screen Shot 2022-02-25 at 9 56 47 AM" src="https://user-images.githubusercontent.com/89370673/155737100-27451f32-c103-4855-bc2b-80efc6b2acb4.png">
 
 
