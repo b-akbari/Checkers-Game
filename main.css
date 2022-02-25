@@ -67,7 +67,7 @@ TD {
     display: grid;
     grid-column: 2;
     grid-row: 1;
-    margin:10vh 6vw ;
+    margin:12vh 6vw ;
 
 }
 
@@ -164,7 +164,7 @@ h1{
     display:grid;
     grid-row:1;
     font-size: 3vh;
-    padding: 1w;
+    padding: 1vw;
     background-color:slategray;
     margin:2vw
   }
