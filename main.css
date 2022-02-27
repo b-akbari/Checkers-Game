@@ -1,86 +1,125 @@
 body{
     background-color: #F9ECCC;
-    /* display:grid; */
     height:100vh;
     width: 100vw;
     margin:0;
-    /* grid-auto-columns: 2, 1fr; */
-    /* grid-auto-rows: minmax(25px,auto); */
-    /* gap:0; */
 }
 
-#container{
-    display:grid;
-    height:75vh;
-    width: 100vw;
-    margin:0;
-    grid-auto-columns: 2fr, 1fr;
-    grid-auto-rows: (1fr);
-    /* gap:vw; */
+
+h1{
+    text-align:center;
+    color:gold;
+    flex-direction: row;
+    font-size: 6vh;
+    background-color: #441a03;
+    width: 50vw;
+    border-radius: 50%;
+    margin: .5vh auto;
+    padding:2vh;
+
 }
-.flex-ctr{
+
+.flex-grid{
     display:flex;
     justify-content: center;
     align-items: center;
 }
 
-TABLE {
-    /* flex-direction:column; */
-    /* justify-content:; */
-    grid-column: 1;
-    grid-row:1;
-    /* display:flex; */
-    border: 1px solid black;
-    background-color:#393D3F ;
-    filter: drop-shadow(5px 5px 6px black);
-    /* display:inline; */
-    height: 82vh;
-    width: 82vh;
-    top:0vh;
-    position: relative;
 
-    /* -block;  */
-    /* margin: 2% auto; */
-    
+ .flex-grid .col {
+    flex: 1;
 }
 
-aside{
-    display: grid;
-    grid-column: 2;
-    grid-row: 1;
-    margin:0;
+TABLE {
+    border: 1px solid black;
+    background-color:#393D3F ;
+    filter: drop-shadow(5px 5px 5px black);
+    /* height: 40vw; */
+    /* width: 45vw; */
+    top:1vw;
+    /* position:; */
 }
 
 TD {
-    width:9vh; 
-    height: 9vh;
+    width:5.5vw; 
+    height: 5.5vw;
     border: .2vh solid black;
     text-align: center;
-    /* color:aqua; */
     background-color:#FFFFFC;
     margin:0;
-    /*  */
-    /* background-color:rgba(179, 179, 179, 0.432); */
+}
+
+img{
+    height:93%;
+    width:93%;
+ }
+
+aside{
+    flex:1;
+    /* display: grid; */
+    /* grid-column: 2; */
+    /* grid-row: 1; */
+    margin:0 auto;
+}
+
+
+#turn-message{
+    text-align: center;
+    font-size: 5vh;
+    width:max-content;
+    margin: auto;
+    background-color:gold ;
+    color:#441a03;
+}
+
+.red{
+    color:rgb(160, 0, 0);
+}
+.black{
+    color:black;
 }
 
 #fire{
-    display: grid;
-    grid-column: 2;
-    grid-row: 1;
-    margin:12vh 6vw ;
+    display: flex;
+    background-color: rgb(73, 73, 73);
+    padding:2vw;
+    align-items: center;
+    margin:0 auto;
+    /* width:40vw; */
 }
 
+h2{
+    border: .3vw solid black;
+    padding:1vw;
+    border-radius:10px;
+    text-align: center;
+}
+
+
+#cozy-welcome{
+    grid-column: 2;
+    display:grid;
+    grid-row:1;
+    font-size: 3vh;
+    /* padding:; */
+    background-color:slategray;
+    margin:2vw
+}
+
+
+
+
 #reset-button{
-    margin:5px;
+    /* margin:1vh; */
     font-size: 3vh;
     color:black;
     border-radius: 2vh;
-    border:3px solid black;
+    border:.5vh solid black;
     background-color: #e3ff94;
-    position:absolute;
-    display:flex;
-    top:13vh;
-    left:2vh;
+    /* position:relat; */
+    display:inline;
+    /* top:13vh; */
+    /* left:2vh; */
 }
 #reset-button:hover{
     background-color: gold;
@@ -113,107 +152,110 @@ TD {
 }
 
 #linked-in{
-position: absolute;
-height: 5vh;
-width: 5vh;
-right:1vh;
-top:1vh;
+    /* display:; */
+    position: absolute;
+    height: 5vw;
+    width: 5vw;
+    
+    right:1vw;
+    top:10vh;
 }
 
 
-* {
-  box-sizing: border-box;
+
+
+*{
+    box-sizing: border-box;
 }
 
-img{
-  height:93%;
-  width:93%;
-}
 
 .selected{
     background-color:rgb(255, 146, 146)!important;
-  }
-
-h1{
-    text-align:center;
-    color:gold;
-    /* display:flex; */
-    flex-direction: row;
-    font-size: 6vh;
-    background-color: #441a03;
-    width: 100vw;
-    border-radius: 50%;
-    margin: 1 vh auto;
-    /* grid-column: ; */
-    /* grid-row: auto; */
-    padding:2vh;
-    /* justify-content: center; */
-      /* width: 10px;; */
 }
 
 
 
-  #cozy-welcome{
-      /* display */
-    grid-column: 2;
-    display:grid;
-    grid-row:1;
-    font-size: 3vh;
-    padding: 1vw;
-    background-color:slategray;
-    margin:2vw
-  }
+
 
   /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none; 
+    position: fixed; 
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
+    width: 100%; 
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    /* background-color: rgba(0,0,0,0.4);  */
+
+}
   
   /* Modal Content/Box */
-  .modal-content {
+.modal-content {
     background-color:gold;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 4vw;
     border: 3vh solid #0D3B66;
     font-size: 10vh;
     justify-content: center;
+    text-align: center;
     border-radius:2vh;
     width: 50vw; /* Could be more or less, depending on screen size */
-  }
+}
 
 
-@media (max-width:820px ){
-    #container{
+@media (max-width:900px ){
+    /* #container{
         display:block;
         height:90vh;
         width: 100vw;
-        /* margin:0 auto; */
+    } */
+
+
+.flex-grid{
+    display: block;
+    .col {
+    width: 100%;
+    margin: 0 0 10px 0;
+    }
+}
+    #turn-message{
+        /* text-align: center; */
+        font-size: 6vh;
+        /* width:max-content; */
+        margin: 0 auto;
+        background-color:gold ;
+        color:#441a03;
+        width: 100vw;
+        top:88vh;
+        border: 2vh solid black;
+        border-radius: 0;
+        /* left:35vw; */
+        position: absolute;
 
     }
     TABLE {
-
-  
-
         border: 1px solid black;
-        background-color:#393D3F ;
-        filter: drop-shadow(5px 5px 6px black);
-        display:block;
-        top:10vh;
+        background-color:black;
+        filter: none;
+        /* display:block; */
+        top:16.8vh;
         width:100vw;
         height: 100vw;
         position: absolute;
-        /* -block;  */
-        /* margin: 0 auto; */
-        
+        margin: 0 auto;
+        /* display: none; */
+    }
+    TD {
+        width:12.5vw; 
+        height: 12.5vw;
+        /* border: 2px solid black; */
+        text-align: center;
+        background-color:#FFFFFC;
+        /* gap:0; */
+        /* margin:0; */
     }
 
     #reset-button{
@@ -224,31 +266,25 @@ h1{
         padding: 1vw;
         background-color: #e3ff94;
         position:absolute;
-        top:5vh;
+        top:7vh;
         
     }
 
     h1{
         text-align:center;
-        font-size: 3vh;
-        background-color: #FF7F11;
-        border-radius: 2vh;
-        width: 40vw;
-        display: flex;
+        font-size: 6vh;
+        background-color: #441a03;
+        border-radius: 0vh;
+        width: 50vw;
+        /* display: block; */
         padding:0px;
+        position: absolute;
+        top:-1vh;
+        width: 100vw;
         /* width: 10px;; */
     }
 
-    TD {
-        width:9vw; 
-        height: 9vw;
-        border: 2px solid black;
-        text-align: center;
-        /* color:aqua; */
-        background-color:#FFFFFC;
-        gap:0;
-        margin:0;
-    }
+
     #cozy-welcome{
         display:none;
     }
@@ -267,9 +303,6 @@ h1{
         height:90vh;
         width: 100vw;
         margin:0;
-        /* grid-auto-columns: 2fr, 1fr; */
-        /* grid-auto-rows: (1fr); */
-        /* gap:vw; */
     }
 
     TABLE {
@@ -277,10 +310,12 @@ h1{
         border: 0px solid black;
         background-color:#393D3F ;
         display:block;
+        position: relative;
         margin: 0 auto;
         width:100vw;
         height: 100vw;
-        top:18vh;
+        /* top: 2vw; */
+        /* top:18vh; */
     }
 
     h1{
@@ -290,13 +325,14 @@ h1{
         border-radius: 10px;
         width: 100vw;
         padding:0px;
+        display: block;
     }
     TD {
         width:12.5vw; 
         height: 12.5vw;
         border: 0px solid black;
         text-align: center;
-]        background-color:#FFFFFC;
+        background-color:#FFFFFC;
         margin:0;
     }
 
@@ -310,15 +346,16 @@ h1{
         border-radius: 2vh;
         padding: 1vw;
         background-color: #e3ff94;
-        position:absolute;
-        top:7.5vh;
+        display: inline-block;
+        /* position:absolute; */
+        /* top:7.5vh; */
     }
 
     #fire{
-        position: absolute;
+        position: relative;
         display: block;
         margin:0 auto; ;
-        top:65vh;
+        top:0vh;
         width:100vw;
     }
     #linked-in{

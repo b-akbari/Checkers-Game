@@ -2,40 +2,28 @@
 const gameBoard = {
     //each "row" is the Y coordinate and each "column" is the X coordinate gameBoard.board[y][x];
     board: [
-      ['', '', '','','','','',''],
-      ['', '', '','','','','',''],
-      ['', '', '','','','','',''],
-      ['', '', '','','','','',''],
-      ['', '', '','','','B','',''],
-      ['', '', '','','','','',''],
-      ['', '', '','','','','',''],
-      ['', '', 'R','','','','',''],
+        ['', 'r', '','r','','r','','r'],
+        ['r','','r','','r','','r',''],
+        ['', 'r', '','r','','r','','r'],
+        ['', '', '','','','','',''],
+        ['', '', '','','','','',''],
+        ['b', '', 'b','','b','','b',''],
+        ['', 'b', '','b','','b','','b'],
+        ['b', '', 'b','','b','','b',''],
     ],}
   
-const baseBoard= [
-    ['', 'r', '','r','','r','','r'],
-    ['r','','r','','r','','r',''],
-    ['', 'r', '','r','','r','','r'],
-    ['', '', '','','','','',''],
-    ['', '', '','','','','',''],
-    ['b', '', 'b','','b','','b',''],
-    ['', 'b', '','b','','b','','b'],
-    ['b', '', 'b','','b','','b',''],
-  ]
-
 let blackTurn=true;
 let firstClick=true;
 let validClick=true;
   
 function renderPieces(){
-  console.log('renderPieces triggered');
     gameBoard.board.forEach((row,idexY)=>{
     row.forEach((X,idexX)=>{
             let square= document.getElementById(`${idexY}-${idexX}`);
             if(X==='r'){
-            square.innerHTML="<img src='images/Red-Checkers-Piece.png'>"
+                square.innerHTML="<img src='images/Red-Checkers-Piece.png'>"
             } else if(X==='b'){
-            square.innerHTML="<img src='images/Black-checkers-piece.png'>";
+                square.innerHTML="<img src='images/Black-checkers-piece.png'>";
             } else if(X=='o'){
                 square.innerHTML="<img src ='images/Target-option-Checkers.png'>"
             } else if(X===''){
@@ -45,8 +33,8 @@ function renderPieces(){
             } else if(X==='R'){
                 square.innerHTML="<img src='images/Red-Checkers-king.png'>";
             }
+        })
     })
-})
 }
 
 renderPieces();
@@ -58,28 +46,21 @@ let winningMessage=document.getElementById('winning-message');
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+    if (event.target == modal){
+        modal.style.display = "none";
+    }
 }
 
 function checkWin(){
-    console.log('checkWin triggered')
     winCheckArray=[];
     optionArrY=[];
     selected=true;
     if (blackTurn==false){
         gameBoard.board.forEach((row,idexY)=>{
-            console.log('row:',row);
             row.forEach((column,idexX)=>{
                 if(column=='r'||column=='R'){
                     selectedPieceType=column;
-                    console.log('this is the column',column);
-                    console.log('option array check 1: ',optionArrY);
-                    console.log('index Y:',idexY,'index X:',idexX)
                     checkOptions(idexX,idexY,column);
-                    console.log('option array: ',optionArrY);
-                    console.log('winCheckArray check 2:',winCheckArray);
                 }
             })
         })
@@ -95,8 +76,6 @@ function checkWin(){
             row.forEach((column,idexX)=>{
                 if(column=='b'||column=='B'){
                     checkOptions(idexX,idexY,column);
-                    console.log('test WCA',winCheckArray);
-                    console.log('test WCA',optionArrY);
                 }
             })
         })
@@ -117,7 +96,6 @@ let clickedX=[];
 let clickedIdString=null;
 
 function getClickedLocation (evt){  
-    console.log('getClickedLocation triggered')
     //caches box ID, X and Y coordinates.
     clickedIdString=evt.currentTarget.id.split('-');
     clickedId=evt.currentTarget.id;
@@ -132,7 +110,6 @@ selectedPieceType=null;
 let selected=false;
 
 function ToggleSelectPiece(evt){ //on first click checks if the location belongs to the current player, calls add prev click Function
-
     getClickedLocation(evt);
     optionsShowing=false;
     if(prevClickedId===clickedId || (gameBoard.board[clickedY][clickedX]!='o' && selected==true) ){
@@ -226,7 +203,7 @@ function captureDownLeft(clickedX,clickedY){
 let optionArrX=[];
 let optionArrY=[];
 let optionsShowing=false;
-function checkOptions(clickedX,clickedY,piece){
+function checkOptions(clickedX,clickedY,piece){//if the selected piece meets the conditions of the movement/capture functions, it caches the coordinates of the x and y of the possible option
     optionArrY=[];
     optionArrX=[];
     if( blackTurn===true && piece=='b' && selected==true){ //black piece (moving 'up')
@@ -277,7 +254,7 @@ function checkOptions(clickedX,clickedY,piece){
         }
         //regular red piece
 
-    } else if (blackTurn===false && piece==='r' ){ //if piece is regular red
+    } else if (blackTurn===false && piece==='r' ){ //piece is regular red
         //moves
         if(clickedY<=6){
             moveDownRight(clickedX,clickedY);
@@ -295,7 +272,6 @@ function checkOptions(clickedX,clickedY,piece){
             }
         } 
     }else if(blackTurn===false && piece==='R' && selected===true){//King Red Piece
-        console.log('hitting this');
         if(clickedY>=1){
             moveUpRight(clickedX,clickedY);
             moveUpLeft(clickedX,clickedY);
@@ -326,8 +302,8 @@ function checkOptions(clickedX,clickedY,piece){
         }
         
     }
+    //used in the checkWin function
     winCheckArray=winCheckArray.concat(optionArrY)
-    optionsShowing==true;
 }
 
 function modelOptions(){
@@ -396,6 +372,15 @@ function movePiece(evt){
     }
 }
 
+let turnMessage=document.getElementById('turn-identify')
+function turnPrompt(){
+    if(blackTurn==true){
+        turnMessage.innerHTML='<Span class="black">Black</Span>';
+    } else {
+        turnMessage.innerHTML='<Span class="red">Red</Span>';
+    }
+}
+turnPrompt();
 //adding event listener to all squares on grid
 const boxes=document.querySelectorAll('.box');
 
@@ -410,13 +395,13 @@ function selectBox(evt){
             checkOptions(clickedX,clickedY,selectedPieceType);
             modelOptions();
             renderPieces();
-
         }
         if (selected ==true && optionsShowing==true && gameBoard.board[clickedY][clickedX] =='o'){
             movePiece(); 
             removeOptions();
             renderPieces();
             checkWin();
+            turnPrompt();
         } else{
             clickedId=prevClickedId;
             clickedX=prevClickedX;
@@ -426,7 +411,6 @@ function selectBox(evt){
 }
 const resetButton=document.getElementById('reset-button');
 resetButton.addEventListener('click',resetBoard);
-
 function resetBoard() {
     gameBoard.board= [
         ['', 'r', '','r','','r','','r'],
@@ -437,7 +421,7 @@ function resetBoard() {
         ['b', '', 'b','','b','','b',''],
         ['', 'b', '','b','','b','','b'],
         ['b', '', 'b','','b','','b',''],
-      ]
+    ]
     renderPieces();
     firstClick=true;
     selected=false;
