@@ -45,4 +45,4 @@ Use the mouse to select your piece. click on a targeted box to move your selecte
 
 
 ## Acknowledgments
-A Nod to Filipe, Ivo, Charles, Martin, and the Mongolorians
+A Nod to my instructors Filipe, Ivo, Charles, Martin.
